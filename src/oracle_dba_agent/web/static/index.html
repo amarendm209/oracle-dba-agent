@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Oracle DBA Agent</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>AI Oracle DBA Agent</h1>
+        <p id="target" class="muted">connecting…</p>
+      </div>
+      <div class="controls">
+        <label><input type="checkbox" id="auto" checked /> auto-refresh 30s</label>
+        <button id="refresh">Run diagnosis</button>
+      </div>
+    </header>
+
+    <section id="banner" class="banner">Running first diagnosis…</section>
+
+    <section class="cards" id="summary"></section>
+
+    <main>
+      <section>
+        <h2>Findings &amp; solutions</h2>
+        <div id="findings"></div>
+      </section>
+
+      <section>
+        <h2>Evidence</h2>
+        <div class="tabs" id="tabs"></div>
+        <div id="tables"></div>
+      </section>
+
+      <section>
+        <h2>MCP tools</h2>
+        <p class="muted">
+          The agent calls these tools over MCP; run any of them ad hoc.
+        </p>
+        <div id="tools" class="tools"></div>
+        <pre id="tool-output" class="hidden"></pre>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
