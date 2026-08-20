@@ -1,0 +1,18 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:23-slim
+    container_name: oracle-xe
+    ports:
+      - "1521:1521"
+    environment:
+      # local development only - production credentials come from your secret store
+      ORACLE_PASSWORD: devinlocaldev
+      APP_USER: dba_agent
+      APP_USER_PASSWORD: devinlocaldev
+    volumes:
+      - ./scripts/grant_dba_agent.sql:/container-entrypoint-initdb.d/grant_dba_agent.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 20s
+      timeout: 10s
+      retries: 30
